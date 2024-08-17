@@ -7,6 +7,10 @@ html {
   background-color: #010611 !important;
   color: white !important;
 }
+body {
+  min-width: 100vw;
+  min-height: 100vh;
+}
 
 @layer base {
   :root {
