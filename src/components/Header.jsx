@@ -27,7 +27,7 @@ function Header () {
           <span className='ml-2 self-center p-1'>
             <Link
               to='/roadmaps'
-              className='hover:underline bg-slate-900 border border-slate-700 p-2 rounded-lg font-semibold text-xl mx-2'
+              className='hover:underline bg-slate-900 border border-slate-700 p-2 rounded-lg font-semibold text-xl mr-2'
             >
               Roadmaps
             </Link>
