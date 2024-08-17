@@ -32,7 +32,7 @@ function Header () {
               Roadmaps
             </Link>
           </span>
-          <span className=' self-center p-1'>
+          <span className=' self-center '>
             <SignedOut
               appearance={{
                 baseTheme: dark
