@@ -14,26 +14,24 @@ import { AnimatedContainer } from './components/AnimatedContainer'
 import Features from './components/Features'
 import Faq from './components/Faq'
 import { Testimonals } from './components/Testimonals'
+import image from './assets/Screenshot 2024-08-16 190617.png'
 function App () {
   const [count, setCount] = useState(0)
 
   return (
     <div className='min-w-screen'>
       <Hero />
-      <div className=' flex justify-center flex-col  '>
+      <div className=' flex justify-center flex-col mt-20 '>
         <div className='self-center'>
           <div className='relative  flex items-center py-10 md:py-20 w-full'>
-            <div className='absolute top-1/2 left-1/2 h-full -z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-700 via-blue-800 to-gray-900 w-full -translate-x-1/2  -translate-y-1/2 inset-0 blur-[10rem]'></div>
+            <div className='absolute top-1/2 left-1/2 h-full -z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-700 via-blue-800 to-gray-900 w-[1300px] -translate-x-1/2  -translate-y-1/2 inset-0 blur-[10rem]'></div>
             <div className='-m-2 rounded-xl   p-2 ring-1 ring-inset ring-foreground/20 lg:-m-4 lg:rounded-2xl bg-opacity-50 backdrop-blur-3xl'>
-              <iframe
-                className='rounded-md  backdrop-blur-md  lg:rounded-xl bg-foreground/10 shadowring-1 ring-border flex h-[200px] w-full sm:h-[500px] sm:w-[710px] lg:w-[1000px] lg:h-[700px] '
-                src='https://www.youtube.com/embed/RiI9UGO3Ta0?si=G6g4zVCOfkCmCzNI'
-                title='YouTube video player'
-                frameborder='0'
-                allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-                referrerpolicy='strict-origin-when-cross-origin'
-                allowfullscreen
-              ></iframe>
+              <img
+                className='rounded-md object-cover backdrop-blur-md lg:rounded-xl bg-foreground/10 shadowring-1 ring-border flex h-[200px] w-full sm:h-[500px] sm:w-[710px] lg:w-[1200px] lg:h-[700px]'
+                src={image}
+                alt='Image placeholder'
+              />
+
               <BorderBeam size={250} duration={8} delay={9} />
             </div>
           </div>
