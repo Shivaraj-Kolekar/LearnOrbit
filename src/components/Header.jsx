@@ -27,7 +27,7 @@ function Header () {
           <span className='ml-2 self-center p-1'>
             <Link
               to='/roadmaps'
-              className='hover:underline bg-slate-900 border border-slate-700  p-2  rounded-lg font-semibold text-xl mx-2'
+              className='hover:underline bg-slate-900 border border-slate-700 p-2 rounded-lg font-semibold text-xl mx-2'
             >
               Roadmaps
             </Link>
@@ -39,9 +39,11 @@ function Header () {
               }}
             >
               <SignInButton
-                className='bg-white hover:bg-slate-300 hover:transform hover:transition-all transform
-            transition-all text-gray-800 px-4 py-2 rounded-lg font-semibold'
-              ></SignInButton>
+                className='bg-white hover:bg-slate-300  text-lg hover:transform hover:transition-all transform
+            transition-all text-gray-800 p-2 rounded-lg font-semibold'
+              >
+                Register
+              </SignInButton>
             </SignedOut>
             <SignedIn
               appearance={{
