@@ -750,7 +750,7 @@ const Roadmaps = () => {
             <ul className='  flex lg:flex-row flex-col flex-wrap  align-middle justify-center '>
               {selectedSkill.projects.map(project => (
                 <li
-                  className='bg-gray-900 border-2 border-gray-800 hover:border-gray-300  hover:scale-105 hover:transform hover:transition-all max-h-[480px]   transform transition-all w-[300px] md:w-[350px] gap-4 p-4 rounded-xl m-2'
+                  className='bg-gray-900 border-2 border-gray-800 hover:border-gray-300  hover:scale-105 hover:transform hover:transition-all max-h-[480px]   transform transition-all  md:w-[350px] gap-4 p-4 rounded-xl m-2'
                   key={project}
                 >
                   <div className=''>
