@@ -1,11 +1,13 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   darkMode: ['class'],
   content: [
     './pages/**/*.{js,jsx}',
     './components/**/*.{js,jsx}',
     './app/**/*.{js,jsx}',
-    './src/**/*.{js,jsx}'
+    './src/**/*.{js,jsx}',
+    './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}'
   ],
   theme: {
     container: {
@@ -140,5 +142,6 @@ module.exports = {
       }
     }
   },
+
   plugins: [require('tailwindcss-animate'), require('daisyui')]
 }

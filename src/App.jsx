@@ -15,6 +15,7 @@ import { AnimatedContainer } from './components/AnimatedContainer'
 import Features from './components/Features'
 import Faq from './components/Faq'
 import { Testimonals } from './components/Testimonals'
+
 import image from './assets/Screenshot 2024-08-16 190617.png'
 function App () {
   const [count, setCount] = useState(0)
@@ -22,6 +23,7 @@ function App () {
   return (
     <div className=''>
       <Hero />
+
       <Analytics />
       <div className=' flex justify-center flex-col lg:mt-20 '>
         <div className='self-center'>

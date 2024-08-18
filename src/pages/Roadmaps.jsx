@@ -5,6 +5,7 @@ import { AnimatedContainer } from '@/components/AnimatedContainer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { useUser } from '@clerk/clerk-react'
 const Roadmaps = () => {
   const [selectedSkills, setSelectedSkills] = useState(() => {
     const savedSkills = localStorage.getItem('CompletedTasks')
@@ -635,10 +636,30 @@ const Roadmaps = () => {
       ]
     }
   ])
-  const notify = () => toast('Wow so easy!')
+  const { isSignedIn } = useUser()
+
   return (
     <div>
       {' '}
+      <div role='alert' className='alert alert-info rounded-md'>
+        <svg
+          xmlns='http://www.w3.org/2000/svg'
+          fill='none'
+          viewBox='0 0 24 24'
+          className='h-6 w-6 shrink-0 stroke-current'
+        >
+          <path
+            strokeLinecap='round'
+            strokeLinejoin='round'
+            strokeWidth='2'
+            d='M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
+          ></path>
+        </svg>
+        <span>
+          The User's Skills progress tracking graphs feature is in development,
+          will be in production soon.
+        </span>
+      </div>
       <h1 className='text-3xl text-white  text-center font-bold my-8'>
         Start your{' '}
         <span className='underline underline-offset-8 text-sky-400'>
@@ -658,7 +679,10 @@ const Roadmaps = () => {
                     ? 'bg-sky-400 border-white border-2 text-white'
                     : ''
                 }`}
-                onClick={() => setSelectedSkill(skill)}
+                onClick={() => {
+                  setSelectedSkill(skill)
+                  toast.success(`${skill.name} Learning Path started`)
+                }}
               >
                 {skill.name}
               </button>
@@ -676,7 +700,9 @@ const Roadmaps = () => {
                 ? 'bg-blue-500 border-white border-2 text-white'
                 : ''
             }`}
-            onClick={() => setTab('roadmap')}
+            onClick={() => {
+              setTab('roadmap')
+            }}
           >
             <Book className='mx-2' size={24} />
             Roadmap
@@ -709,7 +735,15 @@ const Roadmaps = () => {
             <ul>
               {selectedSkill.roadmap.map(step => (
                 <li
-                  onClick={() => handleSelection(step)}
+                  onClick={() => {
+                    !isSignedIn
+                      ? toast.error(
+                          'Please sign in to track the completion of tasks'
+                        )
+                      : !handleSelection(step) && !selectedSkills[step]
+                      ? toast.success('Task completed succesfully')
+                      : toast.warning('incomplerte')
+                  }}
                   className={`bg-slate-900 p-4 border-slate-700 border-2 rounded-lg m-2 ${
                     selectedSkills[step]
                       ? 'bg-teal-700 border-teal-400  line-through border-2'
@@ -717,6 +751,7 @@ const Roadmaps = () => {
                   }`}
                   key={step}
                 >
+                  {' '}
                   <input
                     type='radio'
                     checked={selectedSkills[step] || false}
@@ -789,6 +824,18 @@ const Roadmaps = () => {
           )}
         </div>
       </div>
+      <ToastContainer
+        position='top-right'
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme='colored'
+      />
     </div>
   )
 }
