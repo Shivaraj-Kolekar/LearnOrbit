@@ -2,6 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { Analytics } from '@vercel/analytics/react'
 import ShineBorder from './components/magicui/shine-border'
 import Hero from './components/Hero'
 import { BorderBeam } from './components/magicui/border-beam'
@@ -21,6 +22,7 @@ function App () {
   return (
     <div className=''>
       <Hero />
+      <Analytics />
       <div className=' flex justify-center flex-col lg:mt-20 '>
         <div className='self-center'>
           <div className='relative  flex items-center py-10 md:py-20 '>
