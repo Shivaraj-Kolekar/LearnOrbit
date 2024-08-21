@@ -21,7 +21,7 @@ function Header () {
 
   return (
     <header className='px-3 lg:px-20 h-auto sticky top-0 inset-x-0 min-w-screen bg-foreground/40 backdrop-blur-lg border-b border-border z-50'>
-      <nav className='flex flex-row py-4 justify-between items-center'>
+      <nav className='flex flex-row py-4  justify-between items-center'>
         <div className='flex flex-row gap-3 items-center'>
           <img src={logo} className='w-10 h-10' alt='LearnOrbit Logo' />
           <h1 className='font-semibold text-white text-lg'>
@@ -55,7 +55,7 @@ function Header () {
 function NavItems ({ mobile = false }) {
   return (
     <>
-      <div className='flex justify-between self-center md:flex-row flex-col '>
+      <div className='flex justify-between gap-3 self-center md:flex-row flex-col '>
         <Link
           to='/roadmaps'
           className={`inline-flex items-center text-gray-400 self-start md:self-center hover:text-white text-lg  font-semibold justify-center whitespace-nowrap rounded-md   ring-offset-background border-gray-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50  border-input     ${
@@ -67,7 +67,10 @@ function NavItems ({ mobile = false }) {
         <Feedback />
         <div className={mobile ? 'self-start' : ''}>
           <SignedOut appearance={{ baseTheme: dark }}>
-            <SignInButton className='inline-flex items-center text-gray-400 hover:text-white text-lg  font-semibold   whitespace-nowrap rounded-md  ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 pt-1 '>
+            <SignInButton
+              appearance={{ baseTheme: dark }}
+              className='inline-flex items-center text-gray-400 hover:text-white text-lg  font-semibold   whitespace-nowrap rounded-md  ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 pt-1 '
+            >
               Register
             </SignInButton>
           </SignedOut>

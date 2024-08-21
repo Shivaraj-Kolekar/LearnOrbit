@@ -6,11 +6,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useUser } from '@clerk/clerk-react'
+import CryptoJS from 'crypto-js'
 const Roadmaps = () => {
+  const { isSignedIn, user } = useUser()
   const [selectedSkills, setSelectedSkills] = useState(() => {
     const savedSkills = localStorage.getItem('CompletedTasks')
     return savedSkills ? JSON.parse(savedSkills) : {}
   })
+  const hashUserId = userId => {
+    return CryptoJS.SHA256(user.id).toString()
+  }
   const [selectedSkill, setSelectedSkill] = useState({
     name: 'React',
     description: 'A JavaScript library for building user interfaces.',
@@ -34,12 +39,24 @@ const Roadmaps = () => {
         url: 'https://react.dev/learn'
       },
       {
-        name: 'React Course by Scrimba',
-        url: 'https://scrimba.com/learn/learnreact'
+        name: 'Complete React Course for beginners by Hitesh Choudhary [Youtube]',
+        url: 'https://youtube.com/playlist?list=PLRAV69dS1uWQos1M1xP6LWN6C-lZvpkmq&si=vh5nHd_gVAefx6p-'
       },
       {
         name: 'FreeCodeCamp React Guide',
         url: 'https://www.freecodecamp.org/learn/front-end-development-libraries/react/'
+      },
+      {
+        name: 'React Full course 2024 by Brocode [Youtube]',
+        url: 'https://youtu.be/CgkZ7MvWUAA?si=9cQP31YahxBWFcXE'
+      },
+      {
+        name: 'Learn React with 1 Project by Web Dev Simplified [Youtube]',
+        url: 'https://youtu.be/Rh3tobg7hEo?si=fnD7fiiPVjrlzETG'
+      },
+      {
+        name: 'React full course with 4 Projects by Smoljames [Youtube]',
+        url: 'https://youtu.be/82PXenL4MGg?si=FUaC4DP8GewJ_clj'
       }
     ],
     projects: [
@@ -73,23 +90,41 @@ const Roadmaps = () => {
     ]
   })
   const handleSelection = step => {
+    if (!user) return // Ensure there's a user before proceeding
+    const userId = user.id
+    const hashedUserId = hashUserId(user.id)
+    console.log('userr id: ', userId)
     setSelectedSkills(prevState => {
       const updatedSkills = {
         ...prevState,
         [step]: !prevState[step]
       }
-      localStorage.setItem('CompletedTasks', JSON.stringify(updatedSkills))
+      if (isSignedIn) {
+        localStorage.setItem(
+          `CompletedTasks_${hashedUserId}`,
+          JSON.stringify(updatedSkills)
+        )
+      }
       return updatedSkills
     })
   }
 
   // This effect runs on component mount to ensure the state is synced with localStorage
+
   useEffect(() => {
-    const savedSkills = localStorage.getItem('CompletedTasks')
-    if (savedSkills) {
-      setSelectedSkills(JSON.parse(savedSkills))
+    if (isSignedIn && user) {
+      const userId = user.id
+      const hashedUserId = hashUserId(user.id)
+      console.log('userr id: ', userId)
+      // Only load from localStorage if the user is signed in
+      const savedSkills = localStorage.getItem(`CompletedTasks_${hashedUserId}`)
+      if (savedSkills) {
+        setSelectedSkills(JSON.parse(savedSkills))
+      }
+    } else {
+      setSelectedSkills({})
     }
-  }, [])
+  }, [isSignedIn, user])
 
   const [tab, setTab] = useState('roadmap')
   const [skills, setSkills] = useState([
@@ -116,12 +151,24 @@ const Roadmaps = () => {
           url: 'https://react.dev/learn'
         },
         {
-          name: 'React Course by Scrimba',
-          url: 'https://scrimba.com/learn/learnreact'
+          name: 'Complete React Course for beginners by Hitesh Choudhary [Youtube]',
+          url: 'https://youtube.com/playlist?list=PLRAV69dS1uWQos1M1xP6LWN6C-lZvpkmq&si=vh5nHd_gVAefx6p-'
         },
         {
           name: 'FreeCodeCamp React Guide',
           url: 'https://www.freecodecamp.org/learn/front-end-development-libraries/react/'
+        },
+        {
+          name: 'React Full course 2024 by Brocode [Youtube]',
+          url: 'https://youtu.be/CgkZ7MvWUAA?si=9cQP31YahxBWFcXE'
+        },
+        {
+          name: 'Learn React with 1 Project by Web Dev Simplified [Youtube]',
+          url: 'https://youtu.be/Rh3tobg7hEo?si=fnD7fiiPVjrlzETG'
+        },
+        {
+          name: 'React full course with 4 Projects by Smoljames [Youtube]',
+          url: 'https://youtu.be/82PXenL4MGg?si=FUaC4DP8GewJ_clj'
         }
       ],
       projects: [
@@ -185,6 +232,18 @@ const Roadmaps = () => {
         {
           name: 'Python for Everybody Specialization',
           url: 'https://www.coursera.org/specializations/python'
+        },
+        {
+          name: 'Python Full course for 2024 by Brocode [Youtube]',
+          url: 'https://youtu.be/ix9cRaBkVe0?si=zQ7sDUHMFHuIfNwg'
+        },
+        {
+          name: 'Python Course by Kaggle',
+          url: 'https://www.kaggle.com/learn/python'
+        },
+        {
+          name: 'W3schools python course',
+          url: ' https://www.w3schools.com/python/'
         }
       ],
       projects: [
@@ -231,6 +290,18 @@ const Roadmaps = () => {
         {
           name: 'C++ Reference',
           url: 'https://en.cppreference.com/w/'
+        },
+        {
+          name: 'C++ A complete and modern course for beginners by Hitesh Choudhary',
+          url: 'https://youtu.be/FpfHmAkRVK4?si=69TjFAjmt-XzFE4h'
+        },
+        {
+          name: 'C++ Full Course for free by Brocode',
+          url: 'https://youtu.be/-TkoO8Z07hI?si=RexG3XgeB2bpiS96'
+        },
+        {
+          name: 'W3schools C++ course',
+          url: 'https://www.w3schools.com/cpp/default.asp'
         },
         {
           name: 'LearnCpp.com',
@@ -290,8 +361,16 @@ const Roadmaps = () => {
           url: 'https://university.mongodb.com/'
         },
         {
+          name: 'Learn MongoDB in 1 Hour by Brocode [Youtube]',
+          url: 'https://youtu.be/c2M-rlkkT5o?si=wRdZDO6oE8baSzBA'
+        },
+        {
           name: 'MongoDB Node.js Driver Documentation',
           url: 'https://mongodb.github.io/node-mongodb-native/'
+        },
+        {
+          name: 'W3schools MongoDB course',
+          url: 'https://www.w3schools.com/mongodb/'
         }
       ],
       projects: [
@@ -334,6 +413,14 @@ const Roadmaps = () => {
         {
           name: 'MDN Web Docs - HTML',
           url: 'https://developer.mozilla.org/en-US/docs/Web/HTML'
+        },
+        {
+          name: 'HTML course by Hitesh Choudhary [Youtube]',
+          url: 'https://youtube.com/playlist?list=PLu71SKxNbfoDBNF5s-WH6aLbthSEIMhMI&si=yfJcrRWIlfEF4Hy5'
+        },
+        {
+          name: 'HTML course by Brocode [Youtube]',
+          url: 'https://youtu.be/HD13eq_Pmp8?si=IqwP6PYZvo14Nm4u'
         },
         {
           name: 'W3Schools HTML Tutorial',
@@ -394,6 +481,18 @@ const Roadmaps = () => {
         {
           name: 'FreeCodeCamp CSS Challenges',
           url: 'https://www.freecodecamp.org/learn/responsive-web-design/#basic-css'
+        },
+        {
+          name: 'CSS course by Brocode [Youtube]',
+          url: 'https://youtu.be/wRNinF7YQqQ?si=LZgm8LImRMHxX_AQ'
+        },
+        {
+          name: 'W3schools CSS course',
+          url: 'https://www.w3schools.com/css/default.asp'
+        },
+        {
+          name: 'TailwindCSS course by Hitesh Choudhary [Youtube]',
+          url: ' https://youtu.be/rbSPe1tJowY?si=rezU9nbt-RNqylqI'
         }
       ],
       projects: [
@@ -448,8 +547,20 @@ const Roadmaps = () => {
           url: 'https://javascript.info/'
         },
         {
-          name: 'Eloquent JavaScript',
-          url: 'https://eloquentjavascript.net/'
+          name: 'Freecodecamp Javascript course',
+          url: 'https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures-v8/'
+        },
+        {
+          name: 'Complete Javascript course by Hitesh Choudhary [Youtube]',
+          url: ' https://youtube.com/playlist?list=PLu71SKxNbfoBuX3f4EOACle2y-tRC5Q37&si=TEGmhs1qQkhnZrrZ'
+        },
+        {
+          name: 'W3schools Javascript course',
+          url: ' https://www.w3schools.com/js/default.asp'
+        },
+        {
+          name: 'Javascript course by Brocode [Youtube]',
+          url: 'https://youtube.com/playlist?list=PLZPZq0r_RZOO1zkgO4bIdfuLpizCeHYKv&si=mwuVBo3XAnum2hX_'
         }
       ],
       projects: [
@@ -497,12 +608,20 @@ const Roadmaps = () => {
           url: 'https://nodejs.org/en/docs/'
         },
         {
-          name: 'Node.js Best Practices',
-          url: 'https://github.com/goldbergyoni/nodebestpractices'
+          name: 'Complete Node.js Backend Course by Piyush garg [Youtube]',
+          url: 'https://youtube.com/playlist?list=PLinedj3B30sDby4Al-i13hQJGQoRQDfPo&si=FjowL1OFcTkvAlJB'
         },
         {
           name: 'FreeCodeCamp Back End Development and APIs',
           url: 'https://www.freecodecamp.org/learn/back-end-development-and-apis/'
+        },
+        {
+          name: 'Complete Nodejs Backend Course by Sheryians Coding School [Youtube]',
+          url: ' https://youtube.com/playlist?list=PLbtI3_MArDOkXRLxdMt1NOMtCS-84ibHH&si=OBHf_gSdQ5Gghqnc'
+        },
+        {
+          name: 'W3schools Nodejs Course',
+          url: 'https://www.w3schools.com/nodejs/'
         }
       ],
       projects: [
@@ -556,6 +675,14 @@ const Roadmaps = () => {
         {
           name: 'Mode SQL Tutorial',
           url: 'https://mode.com/sql-tutorial/'
+        },
+        {
+          name: 'Complete MySQL Course By Brocode [Youtube]',
+          url: 'https://youtu.be/5OdVJbNCSso?si=qqyerT1MdFSN1nsG'
+        },
+        {
+          name: 'SQL course by Scaler',
+          url: 'https://www.scaler.com/topics/sql/'
         }
       ],
       projects: [
@@ -611,6 +738,11 @@ const Roadmaps = () => {
         {
           name: 'GitHub Skills',
           url: 'https://skills.github.com/'
+        },
+        { name: 'Git Documentation', url: ' https://git-scm.com/doc' },
+        {
+          name: 'Github cheatsheet by github',
+          url: ' https://education.github.com/git-cheat-sheet-education.pdf'
         }
       ],
       projects: [
@@ -636,7 +768,6 @@ const Roadmaps = () => {
       ]
     }
   ])
-  const { isSignedIn } = useUser()
 
   return (
     <div>
@@ -681,7 +812,7 @@ const Roadmaps = () => {
                 }`}
                 onClick={() => {
                   setSelectedSkill(skill)
-                  toast.success(`${skill.name} Learning Path started`)
+                  toast.info(`${skill.name} Learning Path started`)
                 }}
               >
                 {skill.name}

@@ -47,7 +47,7 @@ const ReviewCard = ({ img, name, username, body }) => {
   return (
     <figure
       className={cn(
-        'relative w-80 h-52 cursor-pointer overflow-hidden  rounded-xl border p-4 border-gray-50/[.1] bg-gray-50/[.10] hover:bg-gray-50/[.15]'
+        'relative w-80 h-52 cursor-pointer overflow-hidden  rounded-xl border p-4 border-gray-50/[.1] bg-gray-400/[.10] hover:bg-gray-50/[.15]'
       )}
     >
       <div className='flex flex-row items-center gap-2'>
@@ -75,8 +75,8 @@ export function Testimonals () {
           <ReviewCard key={review.username} {...review} />
         ))}
       </Marquee>
-      <div className='pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-slate-950'></div>
-      <div className='pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-slate-950'></div>
+      <div className='pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-gray-950'></div>
+      <div className='pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-gray-950'></div>
     </div>
   )
 }
