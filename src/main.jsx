@@ -14,7 +14,8 @@ import Layout from './Layout.jsx'
 import { dark } from '@clerk/themes'
 import Roadmaps from './pages/Roadmaps.jsx'
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
-const clerkFrontendApi = import.meta.env.VITE_CLERK_FRONTEND_API
+const CLERK_FRONTEND_API = import.meta.env.VITE_CLERK_FRONTEND_API
+
 if (!PUBLISHABLE_KEY) {
   throw new Error('Missing Publishable Key')
 }
@@ -35,7 +36,8 @@ createRoot(document.getElementById('root')).render(
         baseTheme: dark
       }}
       publishableKey={PUBLISHABLE_KEY}
-      afterSignOutUrl='/'
+      frontendApi={CLERK_FRONTEND_API}
+      navigate={to => router.navigate(to)}
     >
       <RouterProvider router={router} />
     </ClerkProvider>
