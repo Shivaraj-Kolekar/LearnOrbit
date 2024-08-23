@@ -89,38 +89,48 @@ const Roadmaps = () => {
       }
     ]
   })
-  const handleSelection = step => {
-    if (!user) return // Ensure there's a user before proceeding
-    const userId = user.id
-    const hashedUserId = hashUserId(user.id)
-    console.log('userr id: ', userId)
-    setSelectedSkills(prevState => {
-      const updatedSkills = {
-        ...prevState,
-        [step]: !prevState[step]
-      }
-      if (isSignedIn) {
-        localStorage.setItem(
-          `CompletedTasks_${hashedUserId}`,
-          JSON.stringify(updatedSkills)
-        )
-      }
-      return updatedSkills
-    })
-  }
+  const handleSelection = async step => {
+    if (!user) return
 
-  // This effect runs on component mount to ensure the state is synced with localStorage
+    const userId = user.id
+    const updatedSkills = {
+      ...selectedSkills,
+      [step]: !selectedSkills[step]
+    }
+
+    setSelectedSkills(updatedSkills)
+
+    if (isSignedIn) {
+      try {
+        await fetch('/api/completedTasks', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            userId,
+            completedTasks: updatedSkills
+          })
+        })
+      } catch (error) {
+        console.error('Error saving completed tasks:', error)
+      }
+    }
+  }
 
   useEffect(() => {
     if (isSignedIn && user) {
-      const userId = user.id
-      const hashedUserId = hashUserId(user.id)
-      console.log('userr id: ', userId)
-      // Only load from localStorage if the user is signed in
-      const savedSkills = localStorage.getItem(`CompletedTasks_${hashedUserId}`)
-      if (savedSkills) {
-        setSelectedSkills(JSON.parse(savedSkills))
+      const fetchTasks = async () => {
+        try {
+          const response = await fetch(`/api/completedTasks?userId=${user.id}`)
+          const data = await response.json()
+          setSelectedSkills(data.completedTasks || {})
+        } catch (error) {
+          console.error('Error fetching tasks:', error)
+        }
       }
+
+      fetchTasks()
     } else {
       setSelectedSkills({})
     }
