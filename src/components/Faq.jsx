@@ -54,7 +54,7 @@ function Faq () {
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value='item-6'>
-            <AccordionTrigger>
+            <AccordionTrigger className='text-start'>
               Can I switch between different tech roadmaps?
             </AccordionTrigger>
             <AccordionContent>
