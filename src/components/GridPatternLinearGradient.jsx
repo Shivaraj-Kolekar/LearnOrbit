@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom'
 import { Button } from './ui/button'
 import { ArrowRight } from 'lucide-react'
 import { BorderBeam } from './magicui/border-beam'
+import LetterPullup from './magicui/letter-pullup'
+import BlurIn from './magicui/blur-in'
 const GridPatternLinearGradient = () => {
   return (
     <div className='relative backdrop-blur-lg flex min-h-1/3 mb-4 align-middle  justify-center overflow-hidden rounded-lg   lg:px-20 px-4 '>
@@ -24,10 +26,10 @@ const GridPatternLinearGradient = () => {
               </AnimatedShinyText>{' '}
             </div>
           </div>
+
           <p className='mt-8 text-white whitespace-pre-wrap  text-center md:text-6xl text-3xl font-semibold tracking-tighter  dark:text-white'>
             Unlock Your Tech Potential with LearnOrbit
           </p>
-
           <p className=' my-4 whitespace-pre-wrap  text-center md:text-2xl text-lg font-semibold tracking-tighter text-gray-300 dark:text-white'>
             Navigate your journey from beginner to pro with personalized
             learning paths. Build real-world projects and access top-quality

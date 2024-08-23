@@ -21,9 +21,9 @@ const reviews = [
     img: 'https://avatar.vercel.sh/john'
   },
   {
-    name: 'Jane',
+    name: 'Rudra',
     username: '@jane',
-    body: "I'm at a loss for words. This is amazing. I love it.",
+    body: 'The interface is very modern, and the roadmap features are incredibly intuitive.',
     img: 'https://avatar.vercel.sh/jane'
   },
   {
@@ -37,6 +37,18 @@ const reviews = [
     username: '@james',
     body: "I'm at a loss for words. This is amazing. I love it.",
     img: 'https://avatar.vercel.sh/james'
+  },
+  {
+    name: 'Jenny',
+    username: '@jenny',
+    body: "I'm at a loss for words. This is amazing. I love it.",
+    img: 'https://avatar.vercel.sh/jenny'
+  },
+  {
+    name: 'Jenny',
+    username: '@jenny',
+    body: "I'm at a loss for words. This is amazing. I love it.",
+    img: 'https://avatar.vercel.sh/jenny'
   }
 ]
 
