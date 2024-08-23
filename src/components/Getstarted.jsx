@@ -4,7 +4,7 @@ const Getstarted = () => {
   return (
     <section className='bg-transparent py-12'>
       <div className='container mx-auto px-4'>
-        <h2 className='text-3xl font-bold text-center mb-8'>
+        <h2 className=' mt-8  whitespace-pre-wrap   text-center md:text-4xl text-2xl font-bold tracking-tighter text-white mb-12'>
           Start Your Journey in 3 Simple Steps
         </h2>
         <div className='flex lg:flex-row flex-col gap-4 justify-center'>
