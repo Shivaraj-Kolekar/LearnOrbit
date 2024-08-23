@@ -37,6 +37,7 @@ createRoot(document.getElementById('root')).render(
       }}
       publishableKey={PUBLISHABLE_KEY}
       frontendApi={CLERK_FRONTEND_API}
+      navigate={to => router.navigate(to)}
     >
       <RouterProvider router={router} />
     </ClerkProvider>
