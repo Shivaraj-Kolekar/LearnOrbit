@@ -8,7 +8,7 @@ import {
   createRoutesFromElements,
   createBrowserRouter
 } from 'react-router-dom'
-import { NextUIProvider } from '@nextui-org/react'
+
 import { ClerkProvider } from '@clerk/clerk-react'
 import Layout from './Layout.jsx'
 import { dark } from '@clerk/themes'

@@ -1,5 +1,5 @@
 import React from 'react'
-import { BorderBeam } from './magicui/border-beam'
+
 const Getstarted = () => {
   return (
     <section className='bg-transparent py-12'>

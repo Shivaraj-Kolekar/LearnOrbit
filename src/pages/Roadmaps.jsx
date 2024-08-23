@@ -1,8 +1,5 @@
 import { useEffect, useState } from 'react'
 import { Book, Target, Briefcase } from 'lucide-react'
-import SpotlightCard from '@/components/SpotlightCard'
-import { AnimatedContainer } from '@/components/AnimatedContainer'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useUser } from '@clerk/clerk-react'

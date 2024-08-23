@@ -1,26 +1,14 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import { Analytics } from '@vercel/analytics/react'
-import ShineBorder from './components/magicui/shine-border'
 import Hero from './components/Hero'
 import { BorderBeam } from './components/magicui/border-beam'
-import ShinyButton from './components/magicui/shiny-button'
-import { MagicCard } from './components/magicui/magic-card'
-import GradualSpacing from './components/magicui/gradual-spacing'
-import SpotlightCard from './components/SpotlightCard'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { AnimatedContainer } from './components/AnimatedContainer'
 import Features from './components/Features'
 import Faq from './components/Faq'
 import { Testimonals } from './components/Testimonals'
-
 import image from './assets/Roadmap_preview.png'
 import Getstarted from './components/Getstarted'
 function App () {
-  const [count, setCount] = useState(0)
-
   return (
     <div className=''>
       <Hero />

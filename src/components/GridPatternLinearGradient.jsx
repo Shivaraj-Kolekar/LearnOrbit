@@ -6,8 +6,6 @@ import { Link } from 'react-router-dom'
 import { Button } from './ui/button'
 import { ArrowRight } from 'lucide-react'
 
-import LetterPullup from './magicui/letter-pullup'
-import BlurIn from './magicui/blur-in'
 const GridPatternLinearGradient = () => {
   return (
     <div className='relative backdrop-blur-lg flex min-h-1/3 mb-4 align-middle  justify-center overflow-hidden rounded-lg   lg:px-20 px-4 '>

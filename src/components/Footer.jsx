@@ -12,6 +12,7 @@ function Footer () {
           <li>
             <a
               href='https://github.com/Shivaraj-Kolekar/LearnOrbit'
+              target='_blank'
               className='bg-white text-black px-4 py-2 texl-xl font-semibold rounded-md md:mb-0 mb-10 hover:underline me-4 md:me-6'
             >
               Github
