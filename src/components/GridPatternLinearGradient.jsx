@@ -5,7 +5,7 @@ import { ArrowRightIcon } from '@radix-ui/react-icons'
 import { Link } from 'react-router-dom'
 import { Button } from './ui/button'
 import { ArrowRight } from 'lucide-react'
-import { BorderBeam } from './magicui/border-beam'
+
 import LetterPullup from './magicui/letter-pullup'
 import BlurIn from './magicui/blur-in'
 const GridPatternLinearGradient = () => {

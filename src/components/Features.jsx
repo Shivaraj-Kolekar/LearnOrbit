@@ -15,7 +15,7 @@ function Features () {
 
         <div className='flex flex-col lg:flex-row gap-4 mt-12'>
           <SpotlightCard
-            className='custom-spotlight-card bg-slate-900 self-center h-auto w-80 md:h-80 md:w-96 '
+            className='custom-spotlight-card bg-slate-900 self-center h-auto w-[360px] md:h-80 md:w-96 '
             spotlightColor='rgba(0, 229, 255, 0.2)'
           >
             <FontAwesomeIcon
@@ -37,7 +37,7 @@ function Features () {
             <BorderBeam size={250} duration={12} delay={9} />
           </SpotlightCard>
           <SpotlightCard
-            className='custom-spotlight-card bg-slate-900 self-center h-auto w-80 md:h-80 md:w-96 '
+            className='custom-spotlight-card bg-slate-900 self-center h-auto w-[360px] md:h-80 md:w-96 '
             spotlightColor='rgba(0, 229, 255, 0.2)'
           >
             <FontAwesomeIcon
@@ -58,7 +58,7 @@ function Features () {
             <BorderBeam size={250} duration={12} delay={9} />
           </SpotlightCard>
           <SpotlightCard
-            className='custom-spotlight-card bg-slate-900 self-center h-auto w-80 md:h-80 md:w-96 '
+            className='custom-spotlight-card bg-slate-900 self-center h-auto w-[360px] md:h-80 md:w-96 '
             spotlightColor='rgba(0, 229, 255, 0.2)'
           >
             <FontAwesomeIcon

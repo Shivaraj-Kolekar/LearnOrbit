@@ -3,7 +3,7 @@ import AnimatedShinyText from './magicui/animated-shiny-text'
 import GridPatternLinearGradient from './GridPatternLinearGradient'
 import { cn } from '@/lib/utils'
 import { ArrowRightIcon } from '@radix-ui/react-icons'
-import { BorderBeam } from './magicui/border-beam'
+
 import ShimmerButton from './magicui/shimmer-button'
 import { Button } from './ui/button'
 function Hero () {

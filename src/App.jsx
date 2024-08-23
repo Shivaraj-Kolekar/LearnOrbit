@@ -17,6 +17,7 @@ import Faq from './components/Faq'
 import { Testimonals } from './components/Testimonals'
 
 import image from './assets/Roadmap_preview.png'
+import Getstarted from './components/Getstarted'
 function App () {
   const [count, setCount] = useState(0)
 
@@ -40,6 +41,7 @@ function App () {
           </div>
         </div>
       </div>
+      <Getstarted />
       <Features />
       <Testimonals />
       <Faq />
