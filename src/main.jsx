@@ -37,6 +37,7 @@ createRoot(document.getElementById('root')).render(
       }}
       publishableKey={PUBLISHABLE_KEY}
       afterSignOutUrl='/'
+      fallbackRedirectUrl='https://learn-orbit.vercel.app/'
     >
       <RouterProvider router={router} />
     </ClerkProvider>
