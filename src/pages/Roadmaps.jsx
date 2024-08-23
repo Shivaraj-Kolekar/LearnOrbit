@@ -93,7 +93,7 @@ const Roadmaps = () => {
     if (!user) return // Ensure there's a user before proceeding
     const userId = user.id
     const hashedUserId = hashUserId(user.id)
-    console.log('userr id: ', userId)
+    //console.log('userr id: ', userId)
     setSelectedSkills(prevState => {
       const updatedSkills = {
         ...prevState,
@@ -115,7 +115,7 @@ const Roadmaps = () => {
     if (isSignedIn && user) {
       const userId = user.id
       const hashedUserId = hashUserId(user.id)
-      console.log('userr id: ', userId)
+      //console.log('userr id: ', userId)
       // Only load from localStorage if the user is signed in
       const savedSkills = localStorage.getItem(`CompletedTasks_${hashedUserId}`)
       if (savedSkills) {
@@ -856,7 +856,7 @@ const Roadmaps = () => {
                       ? toast.success('Task completed succesfully')
                       : toast.warning('incomplerte')
                   }}
-                  className={`bg-slate-900 p-4 border-slate-700 border-2 rounded-lg m-2 ${
+                  className={`bg-slate-900 p-4 cursor-pointer border-slate-700 border-2 rounded-lg m-2 ${
                     selectedSkills[step]
                       ? 'bg-teal-700 border-teal-400  line-through border-2'
                       : ''
@@ -878,14 +878,14 @@ const Roadmaps = () => {
             <ul>
               {selectedSkill.references.map(reference => (
                 <li
-                  className='bg-slate-800  p-4 rounded-lg m-2'
+                  className='bg-slate-900 cursor-pointer border-2 border-slate-700 p-4 rounded-lg m-2'
                   key={reference}
                 >
                   <a
                     href={reference.url}
                     target='_blank'
                     rel='noopener noreferrer'
-                    className='text-blue-400 hover:underline'
+                    className='text-blue-400  hover:underline'
                   >
                     {reference.name}
                   </a>
