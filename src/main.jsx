@@ -36,7 +36,7 @@ createRoot(document.getElementById('root')).render(
         baseTheme: dark
       }}
       publishableKey={PUBLISHABLE_KEY}
-      frontendApi={CLERK_FRONTEND_API}
+      afterSignOutUrl='/'
     >
       <RouterProvider router={router} />
     </ClerkProvider>
