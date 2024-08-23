@@ -34,7 +34,6 @@ createRoot(document.getElementById('root')).render(
       appearance={{
         baseTheme: dark
       }}
-      CLERK_FRONTEND_API={CLERK_FRONTEND_API}
       publishableKey={PUBLISHABLE_KEY}
       afterSignOutUrl='/'
     >

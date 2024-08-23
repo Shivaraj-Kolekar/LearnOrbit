@@ -68,6 +68,8 @@ function NavItems ({ mobile = false }) {
         <div className={mobile ? 'self-start' : ''}>
           <SignedOut appearance={{ baseTheme: dark }}>
             <SignInButton
+              fallbackRedirectUrl='/'
+              signUpFallbackRedirectUrl='/roadmap'
               appearance={{ baseTheme: dark }}
               className='inline-flex items-center text-gray-400 hover:text-white text-lg  font-semibold   whitespace-nowrap rounded-md  ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 pt-1 '
             >
