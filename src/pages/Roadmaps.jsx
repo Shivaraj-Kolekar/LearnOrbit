@@ -89,48 +89,38 @@ const Roadmaps = () => {
       }
     ]
   })
-  const handleSelection = async step => {
-    if (!user) return
-
+  const handleSelection = step => {
+    if (!user) return // Ensure there's a user before proceeding
     const userId = user.id
-    const updatedSkills = {
-      ...selectedSkills,
-      [step]: !selectedSkills[step]
-    }
-
-    setSelectedSkills(updatedSkills)
-
-    if (isSignedIn) {
-      try {
-        await fetch('/api/completedTasks', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            userId,
-            completedTasks: updatedSkills
-          })
-        })
-      } catch (error) {
-        console.error('Error saving completed tasks:', error)
+    const hashedUserId = hashUserId(user.id)
+    console.log('userr id: ', userId)
+    setSelectedSkills(prevState => {
+      const updatedSkills = {
+        ...prevState,
+        [step]: !prevState[step]
       }
-    }
+      if (isSignedIn) {
+        localStorage.setItem(
+          `CompletedTasks_${hashedUserId}`,
+          JSON.stringify(updatedSkills)
+        )
+      }
+      return updatedSkills
+    })
   }
+
+  // This effect runs on component mount to ensure the state is synced with localStorage
 
   useEffect(() => {
     if (isSignedIn && user) {
-      const fetchTasks = async () => {
-        try {
-          const response = await fetch(`/api/completedTasks?userId=${user.id}`)
-          const data = await response.json()
-          setSelectedSkills(data.completedTasks || {})
-        } catch (error) {
-          console.error('Error fetching tasks:', error)
-        }
+      const userId = user.id
+      const hashedUserId = hashUserId(user.id)
+      console.log('userr id: ', userId)
+      // Only load from localStorage if the user is signed in
+      const savedSkills = localStorage.getItem(`CompletedTasks_${hashedUserId}`)
+      if (savedSkills) {
+        setSelectedSkills(JSON.parse(savedSkills))
       }
-
-      fetchTasks()
     } else {
       setSelectedSkills({})
     }
@@ -782,25 +772,6 @@ const Roadmaps = () => {
   return (
     <div>
       {' '}
-      <div role='alert' className='alert alert-info rounded-md'>
-        <svg
-          xmlns='http://www.w3.org/2000/svg'
-          fill='none'
-          viewBox='0 0 24 24'
-          className='h-6 w-6 shrink-0 stroke-current'
-        >
-          <path
-            strokeLinecap='round'
-            strokeLinejoin='round'
-            strokeWidth='2'
-            d='M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
-          ></path>
-        </svg>
-        <span>
-          The User's Skills progress tracking graphs feature is in development,
-          will be in production soon.
-        </span>
-      </div>
       <h1 className='text-3xl text-white  text-center font-bold my-8'>
         Start your{' '}
         <span className='underline underline-offset-8 text-sky-400'>
@@ -817,7 +788,7 @@ const Roadmaps = () => {
                 key={skill.name}
                 className={`bg-slate-900 self-center transform transition-all hover:scale-105 hover:transform hover:transition-all h-16 w-full lg:w-56 md:w-80  my-2 text-white hover:bg-slate-800 rounded-lg px-4 py-2 mx-2 ${
                   selectedSkill.name === skill.name
-                    ? 'bg-sky-400 border-white border-2 text-white'
+                    ? 'bg-blue-700 border-white border-2 text-white'
                     : ''
                 }`}
                 onClick={() => {
@@ -838,7 +809,7 @@ const Roadmaps = () => {
           <button
             className={`bg-slate-900 self-center h-16 w-60 my-2 text-white hover:bg-slate-800 p-2 mx-2 flex flex-row justify-center items-center  rounded-lg ${
               tab === 'roadmap'
-                ? 'bg-blue-500 border-white border-2 text-white'
+                ? 'bg-blue-700 border-white border-2 text-white'
                 : ''
             }`}
             onClick={() => {
@@ -851,7 +822,7 @@ const Roadmaps = () => {
           <button
             className={`bg-slate-900 self-center h-16 w-60 my-2 text-white hover:bg-slate-800 p-2 mx-2 flex flex-row justify-center items-center  rounded-lg ${
               tab === 'references'
-                ? 'bg-blue-500 border-white border-2 text-white'
+                ? 'bg-blue-700 border-white border-2 text-white'
                 : ''
             }`}
             onClick={() => setTab('references')}
@@ -862,7 +833,7 @@ const Roadmaps = () => {
           <button
             className={`bg-slate-900 self-center h-16 w-60 my-2 text-white hover:bg-slate-800 p-2 mx-2 flex flex-row justify-center items-center  rounded-lg ${
               tab === 'projects'
-                ? 'bg-blue-500 border-white border-2 text-white'
+                ? 'bg-blue-700 border-white border-2 text-white'
                 : ''
             }`}
             onClick={() => setTab('projects')}

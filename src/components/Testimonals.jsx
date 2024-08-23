@@ -3,21 +3,21 @@ import Marquee from '@/components/magicui/marquee'
 
 const reviews = [
   {
-    name: 'Jack',
+    name: 'Aditya Patil',
     username: '@jack',
-    body: "I've never seen anything like this before. It's amazing. I love it.",
+    body: 'The UI is impressive and the roadmap, along with the references and projects, is incredibly useful. Great job!',
     img: 'https://avatar.vercel.sh/jack'
   },
   {
-    name: 'Jill',
+    name: 'Aditya Kamble',
     username: '@jill',
-    body: "I don't know what to say. I'm speechless. This is amazing.",
+    body: 'I’m really impressed with the UI. The feature for tracking roadmap progress is a standout addition!',
     img: 'https://avatar.vercel.sh/jill'
   },
   {
-    name: 'John',
+    name: 'Aniket',
     username: '@john',
-    body: "I'm at a loss for words. This is amazing. I love it.",
+    body: 'The modern UI is fantastic, and the references provided are incredibly helpful. Well done!s',
     img: 'https://avatar.vercel.sh/john'
   },
   {
@@ -56,7 +56,8 @@ const ReviewCard = ({ img, name, username, body }) => {
           <figcaption className='text-lg font-medium dark:text-white'>
             {name}
           </figcaption>
-          <p className='text-md font-medium dark:text-white/40'>{username}</p>
+          {/* /
+          <p className='text-md font-medium dark:text-white/40'>{username}</p>*/}
         </div>
       </div>
       <blockquote className='mt-2 text-xl'>{body}</blockquote>
@@ -66,17 +67,19 @@ const ReviewCard = ({ img, name, username, body }) => {
 
 export function Testimonals () {
   return (
-    <div className='lg:px-32 px-4 relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg  bg-none md:shadow-xl'>
-      <p className='my-8  whitespace-pre-wrap   text-center md:text-4xl text-2xl font-bold tracking-tighter text-white'>
-        Testimonals
-      </p>
-      <Marquee pauseOnHover className='[--duration:20s]'>
-        {firstRow.map(review => (
-          <ReviewCard key={review.username} {...review} />
-        ))}
-      </Marquee>
-      <div className='pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-gray-950'></div>
-      <div className='pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-gray-950'></div>
-    </div>
+    <section>
+      <div className='lg:px-32 px-4 relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg  bg-none md:shadow-xl'>
+        <p className='my-8  whitespace-pre-wrap   text-center md:text-4xl text-2xl font-bold tracking-tighter text-white'>
+          Testimonals
+        </p>
+        <Marquee pauseOnHover className='[--duration:20s]'>
+          {firstRow.map(review => (
+            <ReviewCard key={review.username} {...review} />
+          ))}
+        </Marquee>
+        <div className='pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-gray-950'></div>
+        <div className='pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-gray-950'></div>
+      </div>
+    </section>
   )
 }

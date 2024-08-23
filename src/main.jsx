@@ -8,9 +8,9 @@ import {
   createRoutesFromElements,
   createBrowserRouter
 } from 'react-router-dom'
-import { NextUIProvider } from '@nextui-org/react'
 import { ClerkProvider } from '@clerk/clerk-react'
 import Layout from './Layout.jsx'
+import Error from './pages/Error.jsx'
 import { dark } from '@clerk/themes'
 import Roadmaps from './pages/Roadmaps.jsx'
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
@@ -21,8 +21,8 @@ if (!PUBLISHABLE_KEY) {
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<Layout></Layout>}>
-      <Route path='/' element={<App />} />
+    <Route path='/' element={<Layout />}>
+      <Route index element={<App />} />
       <Route path='/roadmaps' element={<Roadmaps />} />
       <Route path='*' element={<Error />} />
     </Route>
