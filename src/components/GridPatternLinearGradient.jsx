@@ -40,7 +40,7 @@ const GridPatternLinearGradient = () => {
             >
               <p className='text-foreground text-sm text-white text-center md:text-base font-medium pl-4 pr-4 lg:pr-0'>
                 <Link to='/roadmaps'>
-                  ✨ {'  '} Start building your dream website now!
+                  ✨ {'  '} Start building your dream projects now!
                 </Link>
               </p>
               <Button
