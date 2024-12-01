@@ -26,14 +26,14 @@ To set up and run the project locally, follow these steps:
 1. **Clone the repository:**
 
 ````bash
-   git clone https://github.com/your-username/your-repository.git```
+   git clone https://github.com/Shivaraj-Kolekar/LearnOrbit.git
 
 ````
 
 2. **Navigate to the project directory**:
 
 ```bash
-cd your-repository
+cd LearnOrbit
 ```
 
 3. **Install the dependencies:**
